@@ -10,5 +10,6 @@ using namespace std;
 
 int main() {
     cout << "Hello, World!" << endl;
+    cout<<"this is only for testing git functions"<<endl;
     return 0;
 }
