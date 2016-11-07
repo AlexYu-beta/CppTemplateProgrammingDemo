@@ -1,0 +1,40 @@
+/**
+ * Demo1_2 is an indication of auto-induction mechanism of C++
+ * the result shows that the compiler shall create a new function only by new type of param list
+ * //try coding "nm -C main.out |grep func|grep W" and look through symbol table to figure out the actual
+ * been-created function
+ * keep in mind that type T2 must be defined in the body of the function
+ */
+#include <iostream>
+
+using namespace std;
+template<typename T0, typename T1,typename T2, typename T3, typename T4>
+T2 func(T1,T3,T4);
+
+int main() {
+    double sv2;
+    sv2=func<double,int,int>(1,2,3);
+    cout<<"\tsv2: "<<sv2<<endl;
+    sv2=func<double,int,int>(1,2,3);
+    cout<<"\tsv2: "<<sv2<<endl;
+    sv2=func<double,int,int>(1,0.1,0.1);
+    cout<<"\tsv2: "<<sv2<<endl;
+    sv2=func<int,double,double>(0.1,0.1,0.1);
+    cout<<"\tsv2: "<<sv2<<endl;
+    return 0;
+}
+
+template<typename T0, typename T1,typename T2, typename T3, typename T4>
+T2 func(T1 v1,T3 v3,T4 v4){
+    T0 static sv0=T0(0);
+    T2 static sv2=T2(0);
+    cout<<"\tv1: "<<v1;
+    cout<<"\tv3: "<<v3;
+    cout<<"\tv4: "<<v4;
+    cout<<"\t|| sv0: "<<sv0;
+    T2 v2=sv2;
+    sv0-=1;
+    sv2-=1;
+    return v2;
+
+};
