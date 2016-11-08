@@ -3,14 +3,14 @@
  * calling two functions that share the same static member
  * so the assembler faces the duplicated version
  *
+ * seems the two .out files are the same(orz)
  */
 #include <iostream>
-
+void call();
+void call1();
 using namespace std;
-
 int main() {
-    cout << "Hello, World!" << endl;
-    cout<<"this is only for testing git functions"<<endl;
-    cout<<"why my main account became the author of the latest commits??";
+    call();
+    call1();
     return 0;
 }
