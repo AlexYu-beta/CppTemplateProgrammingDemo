@@ -8,12 +8,14 @@ using std::list;
 using __gnu_cxx::__pool_alloc;
 typedef list<size_t,__pool_alloc<size_t>>gnu_pool_list;
 #endif
-/*
-#ifndef DISABLE_BOOST_POOL_ALLOCATOR
-#include <boost/pool/pool_allocator.h>
 
+///*
+#ifndef DISABLE_BOOST_POOL_ALLOCATOR
+#include <boost/pool/pool_alloc.hpp>
+namespace b=boost;
+typedef list<size_t ,__pool_alloc<size_t >>boost_pool_list;
 #endif
- */
+//*/
 #include <sstream>
 using mylib::pool_allocator;
 typedef list<size_t ,pool_allocator<size_t >> pool_list;
@@ -40,12 +42,12 @@ int main() {
     std::cout<<"=================GNU pool list=================="<<std::endl;
     print_test_result(run_test_suite<gnu_pool_list>());
 #endif
-/*
+///*
 #ifndef DISABLE_BOOST_POOL_ALLOCATOR
-    std::cout<<"=================Boost pool list=================="<<std::end;
+    std::cout<<"=================Boost pool list=================="<<std::endl;
     print_test_result(run_test_suite<boost_pool_list>());
 #endif
-*/
+//*/
     std::cout<<"==================normal list====================="<<std::endl;
     print_test_result(run_test_suite<normal_list>());
     return 0;
